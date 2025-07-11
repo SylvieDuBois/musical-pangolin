@@ -11,15 +11,16 @@ set_global_font()
 
 st.set_page_config(page_title="My Feelings App")
 
-# --- Show top banner ---
-st.markdown(
-    """
-    <div style="text-align: center; margin-top: -2rem;">
-        <img src="https://i.ibb.co/fGZqhfBj/n7uyrdhk.png" style="width: 100%; max-height: 120px; object-fit: cover;">
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+# --- Show top banner only on home page ---
+if "page" not in st.session_state or st.session_state.page == "home":
+    st.markdown(
+        """
+        <div style="text-align: center; margin-top: -2rem;">
+            <img src="https://i.ibb.co/fGZqhfBj/n7uyrdhk.png" style="width: 100%; max-height: 120px; object-fit: cover;">
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 # --- White background and style overrides ---
 st.markdown(

@@ -7,15 +7,19 @@ set_global_font()
 def show_activities():
     st.set_page_config(page_title="I'm Feeling...")
 
+    # Show top banner image only on this page
+    st.markdown(
+        """
+        <div style="text-align: center; margin-top: -1rem;">
+            <img src="https://i.ibb.co/JwDxVwBG/fay0kl6n.png" style="width: 100%; max-height: 120px; object-fit: cover;">
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    
     st.markdown("""
         <style>
-            [data-testid="stAppViewContainer"] {
-                background-image: url('https://i.ibb.co/6JNC9Vc4/Untitled-design-6.png');
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-color: #FFF9F5;
+        ...
             }
 
             * { color: #000000!important; }

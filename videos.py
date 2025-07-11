@@ -1,28 +1,30 @@
-# videos.py
 import streamlit as st
 from font import set_global_font
-set_global_font()
 
+set_global_font()
 
 def show_videos():
     st.set_page_config(page_title="Calming Videos")
 
-    # Apply green button style globally
+    # Top banner image
+    st.markdown(
+        """
+        <div style="text-align: center; margin-top: 0;">
+            <img src="https://i.ibb.co/p6ddJXGH/m05vvwkj.png" style="width: 100%; max-height: 120px; object-fit: cover;">
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+    # Style overrides
     st.markdown("""
         <style>
-        /* Background image */
         [data-testid="stAppViewContainer"] {
-            background-image: url('https://i.ibb.co/bRYN8rk9/Untitled-design-2.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            text-align: center;
-            background-color: #E3F2FD;
+            background-color: #ffffff !important;
         }
 
         .stButton > button {
-            background-color: #C8E6C9 !important;  /* pastel green */
+            background-color: #C8E6C9 !important;
             color: black !important;
             border: none !important;
             border-radius: 12px !important;
@@ -55,7 +57,7 @@ def show_videos():
     videos = [
         ("Beach ⛱", "https://www.youtube.com/watch?v=bn9F19Hi1Lk"),
         ("Forest 𖠰", "https://www.youtube.com/watch?v=xNN7iTA57jM"),
-        ("Aquarium ଳ ", "https://www.youtube.com/watch?v=gdJjc6l6iII"),
+        ("Aquarium ଳ", "https://www.youtube.com/watch?v=gdJjc6l6iII"),
         ("Dance ♬", "https://www.youtube.com/watch?v=rPOB4MbjQmo"),
     ]
 
@@ -75,4 +77,3 @@ def show_videos():
         with cols[1]:
             if st.button("Close", key="close_btn"):
                 st.session_state.selected_video = None
-

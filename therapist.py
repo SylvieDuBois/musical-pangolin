@@ -29,10 +29,17 @@ def show_therapist_info():
             st.success("Therapist info saved!")
 
     # Display saved info
-    if st.session_state.therapist_name or st.session_state.therapist_phone or st.session_state.therapist_email or st.session_state.therapist_office:
+    if (st.session_state.therapist_name or st.session_state.therapist_phone or
+        st.session_state.therapist_email or st.session_state.therapist_office):
         st.markdown("---")
         st.subheader("Saved Therapist Contact Info")
         st.write(f"**Name:** {st.session_state.therapist_name}")
         st.write(f"**Phone:** {st.session_state.therapist_phone}")
         st.write(f"**Email:** {st.session_state.therapist_email}")
         st.write(f"**Office:** {st.session_state.therapist_office}")
+
+    # Add back button to return to parent home page
+    if st.button("⬅ Back to Home"):
+        st.session_state.page = "home"  # Assuming 'home' is the parent home page
+        st.session_state.selected_role_tab = "Parent"  # Ensure role is set to Parent
+  

@@ -7,12 +7,21 @@ set_global_font()
 st.set_page_config(page_title="Games & Activities")
 
 def show_games(): 
-    # Custom styling with fixed background image URL
+    # Show banner image at top, full width, no margin
+    st.markdown(
+        """
+        <div style="text-align: center; margin: 0; padding: 0;">
+            <img src="https://i.ibb.co/mVg99WFp/wtbbda3h.png" 
+                 style="width: 100%; max-height: 120px; object-fit: cover;" />
+        </div>
+        """, unsafe_allow_html=True
+    )
+
+    # Apply white background and general styles
     st.markdown("""
         <style>
             [data-testid="stAppViewContainer"] {
-                background: #FFF9F5 url('https://i.ibb.co/5wCFkDW/Untitled-design-1.png') no-repeat center center fixed;
-                background-size: cover;
+                background-color: #ffffff !important;
             }
 
             /* General text color */

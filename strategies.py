@@ -5,12 +5,11 @@ set_global_font()
 
 
 def show_strategies():
-    st.header("At-Home Coping and Calming Strategies")
+    st.header("At-Home Calming Strategies")
     st.markdown("""
-    Practical tools to practice together:
-    - **Grounding techniques:** Focus on the present moment using the 5-4-3-2-1 method.
-    - **Breathing exercises:** Deep belly breathing to reduce anxiety.
-    - **Creative outlets:** Drawing, journaling, music to express emotions.
-    - **Setting up a calming space:** A quiet corner with comforting objects.
+    **Tools to practice with your child:**
+    - Deep belly breathing to help in times of anxiety.
+    - Creative outlets such as art, journaling, or music to express emotions.
+    - Setting up a calming space with comforting objects.
     """)
     back_to_resources() 

@@ -5,12 +5,11 @@ set_global_font()
 
 
 def show_support():
-    st.header("Supporting Your Child at Home")
+    st.header("Supporting Your Child")
     st.markdown("""
-    Ways you can help your child outside therapy:
-    - Recognize signs your child needs support (mood changes, withdrawal, irritability).
-    - Use active listening to validate feelings.
-    - Create a calm, predictable home environment.
-    - Encourage healthy routines: sleep, nutrition, physical activity.
+    **Ways you can help your child outside therapy:**
+    - Recognize the signs your child needs support such as mood changes, withdrawal, or irritability.
+    - Take the time to listen to your child to validate their feelings.
+    - Encourage physical health through sleep, nutrition, and activity.
     """)
     back_to_resources()
