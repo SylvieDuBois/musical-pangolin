@@ -5,10 +5,9 @@ from videos import show_videos
 from imfeeling import show_activities
 from report import show_report
 from resources import show_resources
-# from chat import show_chat
+from therapist import show_therapist_info
 from font import set_global_font
 set_global_font()
-
 
 st.set_page_config(page_title="My Feelings App")
 
@@ -102,11 +101,13 @@ def return_home(from_page=None):
             else:
                 st.session_state.selected_role_tab = "Child"
 
+
 # --- Init Session State ---
 if "page" not in st.session_state:
     st.session_state.page = "home"
 if "selected_role_tab" not in st.session_state:
     st.session_state.selected_role_tab = "Child"
+
 
 # --- Home View ---
 if st.session_state.page == "home":
@@ -120,6 +121,7 @@ if st.session_state.page == "home":
         horizontal=True,
         key="selected_role_tab"
     )
+
     st.markdown('</div>', unsafe_allow_html=True)
 
     st.markdown('<div class="button-container">', unsafe_allow_html=True)
@@ -135,13 +137,16 @@ if st.session_state.page == "home":
             st.session_state.page = "activities"
         # if st.button("Chat"):
         #     st.session_state.page = "chat"
-    else:
+    else:  # Parent buttons
         if st.button("Weekly Mood Report"):
             st.session_state.page = "report"
         if st.button("Resources"):
             st.session_state.page = "resources"
+        if st.button("Therapist Info"):
+            st.session_state.page = "therapist"
 
     st.markdown('</div>', unsafe_allow_html=True)
+
 
 # --- Pages without white box ---
 elif st.session_state.page == "mood":
@@ -152,7 +157,12 @@ elif st.session_state.page == "report":
     return_home(from_page="report")
     show_report()
 
+
 # --- Pages with white box layout ---
+elif st.session_state.page == "therapist":
+    return_home(from_page="therapist")
+    show_therapist_info()
+
 else:
     return_home(from_page=st.session_state.page)
     with st.container():
