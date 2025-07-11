@@ -1,5 +1,7 @@
 # videos.py
 import streamlit as st
+from font import set_global_font
+set_global_font()
 
 
 def show_videos():
@@ -10,7 +12,7 @@ def show_videos():
         <style>
         /* Background image */
         [data-testid="stAppViewContainer"] {
-            background-image: url('https://i.pinimg.com/736x/16/6f/2f/166f2fb74d11480fcb163c27e8794881.jpg');
+            background-image: url('https://i.ibb.co/bRYN8rk9/Untitled-design-2.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -51,10 +53,10 @@ def show_videos():
     st.markdown("#### Pick a video to help you feel calm:")
 
     videos = [
-        ("𓇼⋆.˚ Beach ⛱⋆.˚", "https://www.youtube.com/watch?v=bn9F19Hi1Lk"),
-        ("⋆ ݁𓍊𖠰𖥧 Forest ↟  𖤣𖥧.", "https://www.youtube.com/watch?v=xNN7iTA57jM"),
-        ("⋅˚₊‧ଳ Aquarium .˚ଳ ", "https://www.youtube.com/watch?v=gdJjc6l6iII"),
-        ("♫⋆｡♪ Dance ₊˚♬ ﾟ.", "https://www.youtube.com/watch?v=rPOB4MbjQmo"),
+        ("Beach ⛱", "https://www.youtube.com/watch?v=bn9F19Hi1Lk"),
+        ("Forest 𖠰", "https://www.youtube.com/watch?v=xNN7iTA57jM"),
+        ("Aquarium ଳ ", "https://www.youtube.com/watch?v=gdJjc6l6iII"),
+        ("Dance ♬", "https://www.youtube.com/watch?v=rPOB4MbjQmo"),
     ]
 
     if "selected_video" not in st.session_state:

@@ -1,15 +1,17 @@
 import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 import random
+from font import set_global_font
+set_global_font()
 
 st.set_page_config(page_title="Games & Activities")
 
-def show_games():  # ✅ Added missing colon
-    # Custom styling
+def show_games(): 
+    # Custom styling with fixed background image URL
     st.markdown("""
         <style>
             [data-testid="stAppViewContainer"] {
-                background: #FFF9F5 url('https://images.unsplash.com/photo-1544039578-7619e5bc1fe7?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+                background: #FFF9F5 url('https://i.ibb.co/5wCFkDW/Untitled-design-1.png') no-repeat center center fixed;
                 background-size: cover;
             }
 
@@ -24,7 +26,6 @@ def show_games():  # ✅ Added missing colon
                 justify-content: center;
                 padding: 1rem;
             }
-
         </style>
     """, unsafe_allow_html=True)
 
@@ -40,7 +41,7 @@ def show_games():  # ✅ Added missing colon
 
     # --- Game logic ---
     if game == "54321 Grounding":
-        st.subheader("5-4-3-2-1 Grounding Game 👁")
+        st.subheader("5-4-3-2-1 Grounding Game")
         st.markdown("**Use your senses.**")
 
         see = st.text_area("5 Things You Can See", value="1.\n2.\n3.\n4.\n5.")
@@ -53,7 +54,7 @@ def show_games():  # ✅ Added missing colon
             st.success("Good Job!")
 
     elif game == "Fidget Game":
-        st.subheader("Fidget Game ᨒ")
+        st.subheader("Fidget Game")
         st.markdown("**Play with virtual rocks:**")
         st.markdown("[Click here to play the Fidget Game](https://neal.fun/rocks/)", unsafe_allow_html=True)
 
@@ -92,7 +93,7 @@ def show_games():  # ✅ Added missing colon
                 st.warning(f"You matched {correct_count} out of {len(situations)} correctly. Keep practicing!")
 
     elif game == "Drawing":
-        st.subheader("Drawing Canvas ✎𓂃")
+        st.subheader("Drawing Canvas")
         st.markdown("**Draw something that makes you feel calm or happy!**")
 
         canvas_result = st_canvas(

@@ -1,6 +1,8 @@
 import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 import random
+from font import set_global_font
+set_global_font()
 
 def show_activities():
     st.set_page_config(page_title="I'm Feeling...")
@@ -8,7 +10,7 @@ def show_activities():
     st.markdown("""
         <style>
             [data-testid="stAppViewContainer"] {
-                background-image: url('https://images.unsplash.com/photo-1720583907133-b02f922864cc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+                background-image: url('https://i.ibb.co/6JNC9Vc4/Untitled-design-6.png');
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
@@ -16,7 +18,7 @@ def show_activities():
                 background-color: #FFF9F5;
             }
 
-            * { color: #FFFFFF !important; }
+            * { color: #000000!important; }
 
             .stButton > button {
                 background-color: #FFFFFF;
