@@ -11,16 +11,22 @@ set_global_font()
 
 st.set_page_config(page_title="My Feelings App")
 
-# --- Background and Component Styles ---
+# --- Show top banner ---
+st.markdown(
+    """
+    <div style="text-align: center; margin-top: -2rem;">
+        <img src="https://i.ibb.co/fGZqhfBj/n7uyrdhk.png" style="width: 100%; max-height: 120px; object-fit: cover;">
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+# --- White background and style overrides ---
 st.markdown(
     """
     <style>
     [data-testid="stAppViewContainer"] {
-        background-image: url('https://i.ibb.co/mQzHrzg/Untitled-design-7.png');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
+        background-color: #ffffff !important;
     }
 
     * {
