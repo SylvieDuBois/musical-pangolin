@@ -4,16 +4,20 @@ from games import show_games
 from videos import show_videos
 from imfeeling import show_activities
 from report import show_report
-from resources import show_resources   # <- Import your resources page here
+from resources import show_resources
+# from chat import show_chat
+from font import set_global_font
+set_global_font()
+
 
 st.set_page_config(page_title="My Feelings App")
 
-# --- Your full CSS styles + radio centering styles ---
+# --- Background and Component Styles ---
 st.markdown(
     """
     <style>
     [data-testid="stAppViewContainer"] {
-        background-image: url('https://plus.unsplash.com/premium_photo-1668192066413-43a64d7b08d6?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        background-image: url('https://i.ibb.co/mQzHrzg/Untitled-design-7.png');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -30,9 +34,8 @@ st.markdown(
         padding: 10px;
     }
 
-    /* Skinny buttons styling like videos page */
     .stButton > button {
-        background-color: #FFE5B4 !important;  /* pastel orange */
+        background-color: #FFE5B4 !important;
         color: black !important;
         border: none !important;
         border-radius: 12px !important;
@@ -55,17 +58,15 @@ st.markdown(
     h1, h2, h3 {
         font-family: inherit !important;
         font-weight: normal;
-        text-align: center !important;  /* Added this */
+        text-align: center !important;
     }
 
-    /* Center all content horizontally */
     .main > div {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    /* Buttons container with fixed width */
     .button-container {
         max-width: 300px;
         width: 100%;
@@ -73,35 +74,35 @@ st.markdown(
         margin-bottom: 20px;
     }
 
-    /* Center radio buttons horizontally */
     .radio-container {
         display: flex;
         justify-content: center;
         margin-bottom: 20px;
     }
-    /* Optional: spacing and size for radio labels */
+
     .stRadio > div > label {
         margin: 0 1rem;
         font-size: 1.1rem;
     }
     </style>
     """,
-    unsafe_allow_html=True,
+    unsafe_allow_html=True
 )
 
-# Return to Home Button for subpages
+
+# --- Return to Home Button ---
 def return_home(from_page=None):
     col1, col2, col3 = st.columns([10, 1, 1])
     with col3:
-        if st.button("X", help="Return to Home"):
+        btn_key = f"return_home_{from_page}" if from_page else "return_home_default"
+        if st.button("X", help="Return to Home", key=btn_key):
             st.session_state.page = "home"
-            # When returning from report or resources, switch tab to Parent
             if from_page in ("report", "resources"):
                 st.session_state.selected_role_tab = "Parent"
             else:
-                st.session_state.selected_role_tab = "Child"  # default
+                st.session_state.selected_role_tab = "Child"
 
-# Initialize session state
+# --- Init Session State ---
 if "page" not in st.session_state:
     st.session_state.page = "home"
 if "selected_role_tab" not in st.session_state:
@@ -122,6 +123,7 @@ if st.session_state.page == "home":
     st.markdown('</div>', unsafe_allow_html=True)
 
     st.markdown('<div class="button-container">', unsafe_allow_html=True)
+
     if selected_role == "Child":
         if st.button("Mood Diary"):
             st.session_state.page = "mood"
@@ -131,35 +133,40 @@ if st.session_state.page == "home":
             st.session_state.page = "videos"
         if st.button("I'm Feeling..."):
             st.session_state.page = "activities"
+        # if st.button("Chat"):
+        #     st.session_state.page = "chat"
     else:
         if st.button("Weekly Mood Report"):
             st.session_state.page = "report"
-        if st.button("Resources"):      # Added resources button here
+        if st.button("Resources"):
             st.session_state.page = "resources"
+
     st.markdown('</div>', unsafe_allow_html=True)
 
-# --- Subpages ---
+# --- Pages without white box ---
 elif st.session_state.page == "mood":
     return_home()
     show_diary()
-
-elif st.session_state.page == "games":
-    return_home()
-    show_games()
-
-elif st.session_state.page == "videos":
-    return_home()
-    show_videos()
-
-elif st.session_state.page == "activities":
-    return_home()
-    show_activities()
 
 elif st.session_state.page == "report":
     return_home(from_page="report")
     show_report()
 
-elif st.session_state.page == "resources":      # New routing for resources
-    return_home(from_page="resources")
-    show_resources()
+# --- Pages with white box layout ---
+else:
+    return_home(from_page=st.session_state.page)
+    with st.container():
+        st.markdown('<div class="white-box">', unsafe_allow_html=True)
 
+        if st.session_state.page == "games":
+            show_games()
+        elif st.session_state.page == "videos":
+            show_videos()
+        elif st.session_state.page == "activities":
+            show_activities()
+        elif st.session_state.page == "resources":
+            show_resources()
+        # elif st.session_state.page == "chat":
+        #     show_chat()
+
+        st.markdown('</div>', unsafe_allow_html=True)
