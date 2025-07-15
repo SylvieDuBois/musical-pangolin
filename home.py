@@ -1,4 +1,12 @@
 import streamlit as st
+
+import ui_helpers as ui
+
+ui.init_globals()
+ui.render_calm_mode_toggle()
+ui.apply_calm_mode_style()
+ui.check_screen_time_reminder()
+
 from diary import show_diary
 from games import show_games
 from videos import show_videos
